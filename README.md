@@ -1,8 +1,10 @@
 # Tracker
 
-Tracker is a task management and reporting web application for the individual.
+An offline task management web application, developed for the individual working in an Enterprise organisation.
 
 The goals of this project include:
+ * being able to run offline i.e. all data is stored on the local machine only
+ * being able to run without administrative privileges
  * being able to simply create and progress tasks through a workflow
  * being able to effectively prioritise which tasks should be worked on
  * being able to report what has been done at various different scopes (levels of detail)
@@ -14,7 +16,7 @@ The features of this web application include:
  * recurring tasks
  * time-based reporting of completed tasks
 
-# Usage
+# For Users
 ## Pre-Requisites
 Java 8 or higher must be installed and available on the PATH of the machine.
 
@@ -31,19 +33,37 @@ You can optionally modify the application.properties file in the directory to ch
 ## How to Stop the Application
 Using a process explorer you should kill the `javaw.exe` process which the startup script initiated.
 
-# Architecture
-The server-side code for this application is relatively dumb. It acts purely as a web service API. Almost all logic occurs in the client.
+## Backups
+Currently there are no automated backups for the database. You should instead take periodic manual backups.
+### Creating Backups
+1. Stop the application by killing the `javaw.exe` process
+2. Copy the `tracker-hsqldb` directory to the location where you wish to store your backup
+### Restoring Backups
+1. Stop the application by killing the `javaw.exe` process
+2. Remove the `tracker-hsqldb` directory from the installation directory
+3. Copy the backup of the `tracker-hsqldb` into the installation directory
+
+# For Developers
+
+## Modules
+### tracker-dist
+An assembly module used to build a zip and tar.gz archive of the application to be downloaded by potential users.
+### tracker-web
+The main module for the application which contains both the server-side and client-side source code.
+This module is built as a Java JAR file which contains an embedded Tomcat instance and database, using Sprint Boot.
+
+## Building
+This project can be built using Maven 3 or higher.
+
+## Architecture
+The server-side code for this application is relatively dumb. It acts purely as a web service API to persist data to the database. Almost all logic occurs in the client.
 
 As such everything is 'pull' based. This means that snoozes, recurring tasks, notifications etc. are all based on the current status of the
-tasks in question rather than relying on some server-side jobs. This limits the potential of this application in the name of simplicity.
-
-## Packaging
-Tracker is built as a Java JAR file which contains an embedded Tomcat instance and database. You just need to run the jar file in order to start the application.
-This jar file is bundled along with some helpful scripts to zip and tar.gz archives.
+tasks in question rather than relying on server-side jobs. This limits the potential of this application in the name of simplicity.
 
 ## Storage
 Tracker uses an embedded database which stores its data in files in the working directory.
-As such you should be sure to start tracker from the same working directory as the jar file each time you wish to use the same database. 
+As such you should be sure to start tracker from the same working directory as the jar file in order to use the same database.
 
 # Versions
 ### 1.0.0
