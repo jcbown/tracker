@@ -1,0 +1,41 @@
+<div draggable="true" data-task-id="{{id}}"
+     class="task-card panel panel-default
+    {{#if selected}}selected{{/if}}
+    {{#ifCond status '==' 'DONE'}}doneStatus{{/ifCond}}
+    {{#ifCond status '==' 'WAITING'}}waitingStatus{{/ifCond}}
+    {{#ifCond status '==' 'STARTED'}}startedStatus{{/ifCond}}
+    ">
+    <div class="panel-body">
+        {{#if recurrenceSchedule}}<span class="glyphicon glyphicon-repeat"></span>{{/if}}
+        <span class="taskSummarySpan
+            {{#if dueSoon}}dueSoon{{/if}}
+            {{#if overdue}}overdue{{/if}}
+            ">{{summary}}</span>
+        <input type="text" class="taskSummaryInput" size="40">
+        {{#each tags}}
+            <span class="label label-primary">{{this}}</span>
+        {{/each}}
+        <span class="task-icons pull-right">
+            <a class="snoozeBtn" href="javascript:void(0)" tabindex="0" role="button" data-toggle="popover" data-trigger="focus"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></a>
+            <a class="waitingBtn" title="waiting" href="javascript:void(0)"><span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span></a>
+            <a class="startedBtn" title="started" href="javascript:void(0)"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a>
+            <a class="doneBtn" title="done" href="javascript:void(0)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        </span>
+    </div>
+    <!--<div class="panel-footer">-->
+        <!--data-->
+    <!--</div>-->
+    {{#if snoozed}}
+        <div class="panel-footer snooze-footer">
+            Will unsnooze {{snoozedUntil}}
+        </div>
+    {{/if}}
+    {{#if unsnoozed}}
+        <div class="panel-footer snooze-footer">
+            Unsnoozed {{snoozedUntil}} <small>(click to dismiss)</small>
+        </div>
+    {{/if}}
+
+
+
+</div>

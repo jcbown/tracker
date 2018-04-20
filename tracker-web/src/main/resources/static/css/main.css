@@ -1,0 +1,176 @@
+/* HomeView */
+#homeContent {
+    padding-top: 70px; /* to accommodate the navbar at the top */
+    padding-bottom: 30px;
+}
+
+
+/* ActiveTasksView */
+#urgencyLabel {
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+}
+#urgencyLabel::before {
+    content: "\2190";
+    padding-right: 5px;
+}
+#valueLabel {
+    position: absolute;
+    top: 200px;
+    left: -10px;
+    transform: rotate(-90deg);
+    font-weight: bold;
+}
+#valueLabel::after {
+    content: "\2192";
+    padding-left: 5px;
+}
+
+#tableGrid {
+    width: calc(100% - 15px);
+    table-layout: fixed;
+    background-color: #f5f5f5;
+    margin-left: 15px;
+}
+
+#tableGrid td {
+    height: 1px; /* trick to allow the ul in the td to grow to the full height of the td */
+}
+
+.sortableTaskList {
+    list-style-type: none;
+    height: 100%;
+    min-height: 100px;
+    padding: 5px 5px; /*needed otherwise can't drag into empty list */
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.sortable-placeholder { /* default class name used by sortable library for drag-and-drop */
+    background-color: #f9f9f9;
+    border: 2px dashed gray;
+}
+
+#threeThingsContainer {
+   display: inline-flex;
+
+}
+
+#threeThingsContainer .panel-body {
+    margin-right: 15px;
+}
+
+#threeThingsContainer>div {
+    margin-right: 10px;
+    position: relative;
+}
+
+#threeThingsContainer .threeThingsBtn {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: 8pt;
+    color: grey;
+}
+
+#collapseNotes.collapsing {
+    transition: none;
+}
+
+
+/* Task View */
+.task-card {
+    font-size: 10pt;
+    margin-bottom: 0.75em;
+}
+
+.task-card.selected {
+    box-shadow: 0 0 0 1.5pt grey;
+}
+
+.task-card .panel-body {
+    padding: 7px;
+}
+
+.taskSummaryInput {
+    position: relative;
+    z-index: 10;
+}
+
+.task-icons {
+    padding-left: 5px;
+    font-size: 10pt;
+}
+
+.doneBtn {
+    color: green;
+}
+
+.waitingBtn {
+    color: grey;
+}
+
+.startedBtn {
+    color: #b18be8;
+}
+
+.snoozeBtn {
+    color: orange;
+}
+
+.dueSoon {
+    color: #ee7600;
+}
+
+.overdue {
+    color: red;
+    font-weight: bold;
+}
+
+.doneStatus {
+    background-color: #dff0d8;
+}
+
+.waitingStatus {
+    background-color: lightgrey;
+    color: grey;
+}
+
+.startedStatus {
+    background-color: #e7e2ff;
+}
+
+.snooze-footer {
+    background-color: #fcf8e3;
+}
+
+.popover {
+    width: 550px;
+    max-width: 550px;
+}
+
+/* Snooze View */
+
+.snoozeDefaults {
+    margin-bottom: 30px;
+}
+
+.task-card .popover{
+    width: 600px;
+    max-width: 600px;
+}
+
+/* Report View */
+#reportAccordionControls {
+    height: 30px;
+}
+
+#reportAccordion .badge {
+    background-color: #777;
+}
+
+#reportAccordion .panel-heading {
+    cursor: pointer;
+}

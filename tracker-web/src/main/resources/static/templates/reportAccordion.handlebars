@@ -1,0 +1,48 @@
+<div id="reportAccordionControls">
+    <span class="pull-right">
+        <a href="javascript:void(0)" class="expandAll">Expand All</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseAll">Collapse All</a>
+    </span>
+</div>
+<div class="panel-group" id="reportAccordion" role="tablist" aria-multiselectable="true">
+    {{#each tasksByTag}}
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#collapse-tag-{{hashCode tagName}}" role="tab" id="heading-tag-{{hashCode tagName}}">
+                <h4 class="panel-title">
+                    {{tagName}} <span class="badge reportAccordionBadge">{{tasks.length}}</span>
+                </h4>
+            </div>
+            <div id="collapse-tag-{{hashCode tagName}}" class="panel-collapse collapse in" role="tabpanel">
+                <div class="panel-body">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <th>Summary</th>
+                            <th>Tags</th>
+                            <th>Status</th>
+                            <th>Completed</th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                            {{#each tasks}}
+                                <tr class="
+                                    {{#ifCond attributes.status '==' 'DONE'}}doneStatus{{/ifCond}}
+                                    {{#ifCond attributes.status '==' 'WAITING'}}waitingStatus{{/ifCond}}
+                                    {{#ifCond attributes.status '==' 'STARTED'}}startedStatus{{/ifCond}}
+                                ">
+                                    <td>{{attributes.summary}}</td>
+                                    <td>
+                                        {{#each attributes.tagsList}}
+                                            <span class="label label-primary">{{this}}</span>
+                                        {{/each}}
+                                    </td>
+                                    <td>{{attributes.status}}</td>
+                                    <td data-sort="{{isoCompletedDateTime}}"><span title="{{formattedCompletedDateTime}}">{{friendlyCompletedDateTime}}</span></td>
+                                    <td><a class="editBtn" data-task-id={{id}} href="javascript:void(0)">Edit</a></td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

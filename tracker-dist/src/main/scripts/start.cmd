@@ -1,0 +1,1 @@
+javaw -cp . -jar tracker-web.jar

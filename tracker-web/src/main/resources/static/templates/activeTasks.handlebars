@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Filters</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline" onsubmit="return false">
+                        <div class="form-group">
+                            <label for="searchFilter">Search:</label>
+                            <input type="search" class="form-control" id="searchFilter" placeholder="Enter search terms...">
+                        </div>
+                        <div class="form-group">
+                            <label for="statusFilter">Status:</label>
+                            <select id="statusFilter" class="selectpicker" multiple>
+                                <option value="READY" selected>Ready</option>
+                                <option value="WAITING" selected>Waiting</option>
+                                <option value="STARTED" selected>Started</option>
+                                <option value="DONE" data-subtext="(in last 7 days)">Done</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tagsFilter">Tags:</label>
+                            <select id="tagsFilter" class="selectpicker" multiple data-actions-box="true" data-selected-text-format="count" data-live-search="true">
+                                <option value="notag">none</option>
+                                {{#each tags}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="snoozedFilter" value="snoozed"> Show Snoozed
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Three Things</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="threeThingsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="taskGridContainer" class="col-md-8"></div>
+        <div class="col-md-4">
+            <div class="clearfix"><a id="createTaskBtn" class="btn btn-default pull-right" href="javascript:void(0)">Create Task</a></div>
+            <div id="taskDetailsContainer"></div>
+        </div>
+    </div>
+</div>

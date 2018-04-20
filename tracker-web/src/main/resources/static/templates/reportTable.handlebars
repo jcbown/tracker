@@ -1,0 +1,28 @@
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>Summary</th>
+        <th>Tags</th>
+        <th>Status</th>
+        <th>Completed</th>
+        <th></th>
+    </thead>
+    <tbody>
+    {{#each tasks}}
+        <tr class="
+            {{#ifCond attributes.status '==' 'DONE'}}doneStatus{{/ifCond}}
+            {{#ifCond attributes.status '==' 'WAITING'}}waitingStatus{{/ifCond}}
+            {{#ifCond attributes.status '==' 'STARTED'}}startedStatus{{/ifCond}}
+        ">
+            <td>{{attributes.summary}}</td>
+            <td>
+                {{#each attributes.tagsList}}
+                    <span class="label label-primary">{{this}}</span>
+                {{/each}}
+            </td>
+            <td>{{attributes.status}}</td>
+            <td data-sort="{{isoCompletedDateTime}}"><span title="{{formattedCompletedDateTime}}">{{friendlyCompletedDateTime}}</span></td>
+            <td><a class="editBtn" data-task-id={{id}} href="javascript:void(0)">Edit</a></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

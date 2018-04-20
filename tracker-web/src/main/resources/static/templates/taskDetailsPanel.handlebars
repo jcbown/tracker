@@ -1,0 +1,71 @@
+<form onsubmit="return false">
+    <div class="form-group">
+        <label for="tags">Tags</label>
+        <select id="tags" multiple class="form-control">
+            {{#each tagDetails}}
+                <option value="{{name}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="dueDate">Due Date</label>
+            <input type="text" class="form-control" id="dueDate" placeholder="Due Date" value="{{dueDate}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="reportingLevel">Reporting Level</label>
+            <div id="reportingLevel">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="reportingLevel" value="level10" {{#if reportingLevel.level10}}checked{{/if}}> Scrum
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="reportingLevel" value="level20" {{#if reportingLevel.level20}}checked{{/if}}> Management
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="reportingLevel" value="level30" {{#if reportingLevel.level30}}checked{{/if}}> Stakeholder
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="notes">Notes <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="Notes are written using the CommonMark Markdown syntax"></span></label>
+        <a class="pull-right" role="button" data-toggle="collapse" href="#collapseNotes">Edit Notes</a>
+        <div class="collapse" id="collapseNotes">
+            <textarea class="form-control" rows="30" id="notes">{{notes}}</textarea>
+            <span class="pull-right"><a href="http://commonmark.org/help/">Markdown Help</a>&nbsp;&nbsp;<button id="saveNotesBtn" role="button" class="btn btn-default" title="Ctrl+Enter">Save Task</button></span>
+        </div>
+        <div id="notesMarkdown" class="panel panel-default">
+            <div class="panel-body">
+                {{#if notesMarkdown}}
+                    {{{notesMarkdown}}}
+                {{else}}
+                    <small>There are no notes for this task</small>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="recurrenceSchedule">Recurring Task Schedule <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="Format for Cron Expression:&#013;&#013;MINUTE  HOUR  DAY_OF_MONTH  MONTH  DAY_OF_WEEK&#013;&#013;Examples:&#013;0 8 1 * * (first of the month at 8am)&#013;0 8 ? * MON,WED (Mondays and Wednesdays at 8am)"></span></label>
+        <a id="recurrencesBtn" class="pull-right" href="javascript:void(0)">Show Next Occurences</a>
+        <input type="text" class="form-control" id="recurrenceSchedule" placeholder="Cron Expression" value="{{recurrenceSchedule}}">
+    </div>
+    {{#if createdDateTime}}
+        <div class="form-group">
+            <label for="createdDateTime">Created:</label>
+            <span id="createdDateTime" title="{{createdDateTime}}">{{createdDateTimeFriendly}}</span>
+        </div>
+    {{/if}}
+    {{#if modifiedDateTime}}
+        <div class="form-group">
+            <label for="modifiedDateTime">Modified:</label>
+            <span id="modifiedDateTime" title="{{modifiedDateTime}}">{{modifiedDateTimeFriendly}}</span>
+        </div>
+    {{/if}}
+    {{#if completedDateTime}}
+        <div class="form-group">
+            <label for="completedDateTime">Completed:</label>
+            <span id="completedDateTime" title="{{completedDateTime}}">{{completedDateTimeFriendly}}</span>
+        </div>
+    {{/if}}
+    <a id="deleteBtn" href="javascript:void(0)">Delete Task</a>
+</form>

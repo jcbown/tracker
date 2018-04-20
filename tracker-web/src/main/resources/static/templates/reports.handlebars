@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Filters</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="searchFilter radio-inline" class="col-md-2">Search:</label>
+                        <div class="col-md-9">
+                            <input type="search" class="form-control" id="searchFilter" placeholder="Enter search terms...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reportingLevel" class="col-md-2">Reporting Level:</label>
+                        <div class="col-md-9">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="reportingLevel" value="none"> None
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="reportingLevel" value="level10" checked="checked"> Scrum
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="reportingLevel" value="level20" checked="checked"> Management
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="reportingLevel" value="level30" checked="checked"> Stakeholder
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="statuses" class="col-md-2">Status:</label>
+                        <div class="col-md-9">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="statuses" value="READY"> Ready
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="statuses" value="WAITING" checked="checked"> Waiting
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="statuses" value="STARTED" checked="checked"> Started
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="statuses" value="DONE" checked="checked"> Done
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="doneDates" class="col-md-2">Tasks completed:</label>
+                        <div class="col-md-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="doneDates" id="today" value="today"> Today
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="doneDates" id="last3Days" value="last3Days"> Last 3 Days
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="doneDates" id="last7Days" value="last7Days" checked="checked"> Last 7 Days
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="doneDates" id="last14Days" value="last14Days" checked="checked"> Last 14 Days
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="doneDates" id="last30Days" value="last30Days"> Last 30 Days
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="doneDates" id="last90Days" value="last90Days"> Last 90 Days
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="doneDates" id="last365Days" value="last365Days"> Last 365 Days
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="doneDates" id="allDays" value="all"> All
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="groupBy" class="col-md-2">Group by:</label>
+                        <div class="col-md-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="groupBy" id="tagsRadio" value="tags" checked="checked"> Tags
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="groupBy" id="doneDateRadio" value="doneDate"> Completion Date
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="reportTable"></div>
+        <div id="editTaskContainer"></div>
+    </div>
+</div>
