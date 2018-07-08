@@ -7,7 +7,7 @@
     <groupId>jcbown</groupId>
     <artifactId>tracker</artifactId>
     <packaging>pom</packaging>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.2</version>
     <modules>
         <module>tracker-web</module>
         <module>tracker-dist</module>

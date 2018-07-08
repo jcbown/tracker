@@ -42,7 +42,7 @@
             <outputDirectory/>
             <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
             <includes>
-                <include>com.jcbown:tracker-web:jar*</include>
+                <include>jcbown:tracker-web:jar*</include>
             </includes>
         </dependencySet>
     </dependencySets>

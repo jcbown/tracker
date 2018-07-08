@@ -79,3 +79,7 @@ Added features and changed database schema:
 Bugfix release
 - Added esc key handling in notes
 - Fixed help page
+
+### 1.2.2
+Build process release
+- Change of build process and startup scripts
