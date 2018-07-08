@@ -29,6 +29,7 @@ You can optionally modify the application.properties file in the directory to ch
 ## How to Start the Application
 1. Run either the start.cmd (Windows) or start.sh (Linux) script to start the application.
 2. You can access the web application in your web browser at the following link: `http://localhost:12378/tracker/index.html`
+3. The default username/password is `admin`/`password`
 
 ## How to Stop the Application
 Using a process explorer you should kill the `javaw.exe` process which the startup script initiated.
