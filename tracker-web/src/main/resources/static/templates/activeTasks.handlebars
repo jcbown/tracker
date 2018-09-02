@@ -49,6 +49,12 @@
             </div>
         </div>
     </div>
+    {{#if showCleanupWarning}}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>You have a lot of tasks</strong> - consider removing some for the grid to be effective.
+        </div>
+    {{/if}}
     <div class="row">
         <div id="taskGridContainer" class="col-md-8"></div>
         <div class="col-md-4">

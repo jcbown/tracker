@@ -35,6 +35,7 @@ define(function(require) {
         render: function() {
             var template = Handlebars.getTemplate('activeTasks');
             var html = template({
+                showCleanupWarning: this.tasks.length > 20,
                 tags: this.tasks.getTags()
             });
             this.$el.html(html);
@@ -114,7 +115,7 @@ define(function(require) {
             this.$(".sortableTaskList").first().on('sortupdate', this.onGridPositionChange.bind(this)); // only need to listen to one list
 
             // select task
-            if (this.tasks.length != 0) {
+            if (this.tasks.length !== 0) {
                 this.selectLastSelectedTask();
             }
 
