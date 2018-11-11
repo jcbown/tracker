@@ -27,7 +27,7 @@ Simply unzip the zip or tar.gz archive into a new directory.
 You can optionally modify the application.properties file in the directory to change the username, password, port, or context path.
 
 ## How to Start the Application
-1. Run either the start.cmd (Windows) or start.sh (Linux) script to start the application.
+1. Run either the start.cmd (Windows) or start.sh (Mac and Linux) script to start the application.
 2. You can access the web application in your web browser at the following link: `http://localhost:12378/tracker/index.html`
 3. The default username/password is `admin`/`password`
 
@@ -67,14 +67,18 @@ Tracker uses an embedded database which stores its data in files in the working 
 As such you should be sure to start tracker from the same working directory as the jar file in order to use the same database.
 
 # Versions
+
 ### 1.0.0
 This is the initial release of Tracker.
+
 ### 1.1.0
 Bugfix release
+
 ### 1.2.0
 Added features and changed database schema:
 - Introduced reporting Level
 - Additional shortcuts
+
 ### 1.2.1
 Bugfix release
 - Added esc key handling in notes
@@ -83,3 +87,7 @@ Bugfix release
 ### 1.2.2
 Build process release
 - Change of build process and startup scripts
+
+### 1.3.0
+- Added background colour highlighting to indicate 'priority' in matrix
+- Added warning when number of tasks exceeds 20
