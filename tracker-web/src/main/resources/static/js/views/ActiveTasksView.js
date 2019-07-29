@@ -35,7 +35,7 @@ define(function(require) {
         render: function() {
             var template = Handlebars.getTemplate('activeTasks');
             var html = template({
-                showCleanupWarning: this.tasks.length > 20,
+                showCleanupWarning: this.tasks.where({snoozedUntil: null}).length > 20,
                 tags: this.tasks.getTags()
             });
             this.$el.html(html);
