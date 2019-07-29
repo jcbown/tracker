@@ -44,12 +44,14 @@ define(function(require) {
 
             // setup snooze popover
             var snoozeView = new SnoozeView({
-                task: this.task
+                task: this.task,
+                popoverContainer: this.$('.snoozeBtn')
             });
             this.$('.snoozeBtn').popover({
                 animation: false,
                 html: true,
-                content: snoozeView.$el
+                content: snoozeView.$el,
+                trigger: 'manual'
             }).on('shown.bs.popover', function() {
                 snoozeView.render();
             });
@@ -112,7 +114,7 @@ define(function(require) {
             this.task.save();
         },
         snooze: function() {
-            this.$(".snoozeBtn").focus(); // will prompt popover to appear
+            this.$(".snoozeBtn").popover('show'); // will prompt popover to appear
         },
         /* if unsnoozed then unset snoozedUntil property */
         unsnoozeCheck: function() {

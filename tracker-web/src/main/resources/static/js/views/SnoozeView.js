@@ -9,6 +9,7 @@ define(function(require) {
 
         initialize: function(options) {
             this.task = options.task;
+            this.popoverContainer = options.popoverContainer;
         },
         events: {
             // we use the mousedown because the popover disappears before a click event fires due to 'defocus'
@@ -19,7 +20,8 @@ define(function(require) {
             "mousedown .twoWeeksBtn": "setTwoWeeks",
             "mousedown .fourWeeksBtn": "setFourWeeks",
             "mousedown .customSnoozeBtn": "setCustom",
-            "mousedown .unsnoozeBtn": "unsnooze"
+            "mousedown .unsnoozeBtn": "unsnooze",
+            "keyup": "checkKeyup"
         },
         render: function() {
             var template = Handlebars.getTemplate('snooze');
@@ -36,6 +38,7 @@ define(function(require) {
                 sideBySide: true,
                 defaultDate: defaultDate
             });
+            this.$('.laterTodayBtn').focus();
         },
         setLaterToday: function() {
             var date = Moment().add(4, 'hours');
@@ -75,6 +78,20 @@ define(function(require) {
         unsnooze: function() {
             this.task.unset('snoozedUntil');
             this.task.save();
+        },
+        close: function() {
+            this.popoverContainer.popover('hide');
+        },
+        checkKeyup: function(e) {
+            var keyCode = e.keyCode;
+            switch(keyCode) {
+                case 27: // esc
+                    this.close();
+                    break;
+                case 13: // enter
+                    this.$(':focus').mousedown();
+                    break;
+            }
         }
     });
 });
