@@ -177,8 +177,8 @@ define(function(require) {
             var task = new Task({
                 summary: "<task description>",
                 status: "READY",
-                urgency: 1,
-                value: 1,
+                urgency: 2,
+                value: 2,
                 threeThings: false,
                 reportingLevel: {
                     level10: true,
