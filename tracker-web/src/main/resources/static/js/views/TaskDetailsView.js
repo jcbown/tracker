@@ -136,6 +136,9 @@ define(function(require) {
         focusTags: function() {
             this.$(".chosen-container input").focus();
         },
+        focusDueDate: function() {
+            this.$("#dueDate").focus();
+        },
         showNextRecurrences: function() {
             var cron = this.task.get("recurrenceSchedule");
             if (cron) {

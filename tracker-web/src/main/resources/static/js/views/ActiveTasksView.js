@@ -209,6 +209,9 @@ define(function(require) {
                     case 67: // 'c' creates a new task
                         this.createTask();
                         break;
+                    case 68: // 'd' focuses on the due date for a task
+                        this.taskDetailsView.focusDueDate();
+                        break;
                     case 69: // 'e' edits a task summary
                         var id = this.$('.task-card.selected').data('task-id');
                         if (id) {
@@ -239,6 +242,7 @@ define(function(require) {
                             this.toggleThreeThings(id);
                         }
                         break;
+                    case 66: // 'b' snoozes a task
                     case 83: // 's' snoozes a task
                         var id = this.$('.task-card.selected').data('task-id');
                         if (id) {
