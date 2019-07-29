@@ -197,7 +197,7 @@ define(function(require) {
             this.renderTasks();
             // check if new task has been created
             if (options && options.createdTask) {
-                this.selectFirstTask();
+                this.selectTaskById(options.createdTask.id);
                 options.createdTask.view.editSummary();
             }
         },
@@ -379,6 +379,10 @@ define(function(require) {
             this.renderTaskDetails(id);
 
             this.selectedTaskId = id;
+        },
+        selectTaskById: function(taskId) {
+            var $taskEl = this.$("#taskGridContainer .task-card[data-task-id='" + taskId + "']");
+            this.selectTask($taskEl);
         },
         selectFirstTask: function() {
             if (this.firstTaskId) {
