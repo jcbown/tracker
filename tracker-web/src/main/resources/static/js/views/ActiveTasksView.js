@@ -58,10 +58,15 @@ define(function(require) {
             var navigateGrid = {};
 
             var filteredTasks = this.filterTasks();
+
+            // find suggested task
+            var suggestedTask = this.findSuggestedTask();
+
             _.forEach(filteredTasks, function(task) {
                 var taskView = new TaskView({
                     tasks: this.tasks,
-                    task: task
+                    task: task,
+                    isSuggested: task === suggestedTask
                 });
                 task.view = taskView;
 
@@ -163,6 +168,49 @@ define(function(require) {
                 return showSnoozed || !task.isSnoozed();
             });
             return filteredTasks;
+        },
+        findSuggestedTask: function() {
+            var filteredTasks = this.tasks.models;
+
+            // reject if snoozed or waiting
+            filteredTasks = _.reject(filteredTasks, function(task) {
+                return task.isSnoozed() || task.get('status') === "WAITING";
+            });
+
+            var suggestedTask;
+            // find most overdue (if any)
+            suggestedTask = _.chain(filteredTasks).filter(function(task) {
+                    return task.isOverdue();
+                }).min(function(task) {
+                    return task.get('dueDate');
+                }).value();
+            console.log("after overdue", suggestedTask);
+            if (suggestedTask && suggestedTask !== Infinity) return suggestedTask;
+
+            // find any dueSoon (soonest wins)
+            suggestedTask = _.chain(filteredTasks).filter(function(task) {
+                return task.isDueSoon();
+            }).min(function(task) {
+                return task.get('dueDate');
+            }).value();
+            console.log("due soon", suggestedTask);
+            if (suggestedTask && suggestedTask !== Infinity) return suggestedTask;
+
+            // find where in threeThings
+            suggestedTask = _.chain(filteredTasks).filter(function(task) {
+                return task.get('threeThings') === true;
+            }).first().value();
+            console.log("threeThings", suggestedTask);
+            if (suggestedTask) return suggestedTask;
+
+            // find where started
+            suggestedTask = _.chain(filteredTasks).filter(function(task) {
+                return task.get('status') === "STARTED";
+            }).first().value();
+            console.log("threeThings", suggestedTask);
+            if (suggestedTask) return suggestedTask;
+
+            return null;
         },
         renderTaskDetails: function(taskId) {
             var task = this.tasks.get(taskId);

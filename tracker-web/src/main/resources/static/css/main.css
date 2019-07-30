@@ -146,6 +146,11 @@
     background-color: #fcf8e3;
 }
 
+.suggested-footer {
+    background-color: #2e6da4;
+    color: white;
+}
+
 .popover {
     width: 550px;
     max-width: 550px;

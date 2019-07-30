@@ -10,6 +10,7 @@ define(function(require) {
         initialize: function(options) {
             this.tasks = options.tasks;
             this.task = options.task;
+            this.isSuggested = options.isSuggested;
             this.selected = false;
             this.listenTo(this.task, 'sync', this.render);
             this.render();
@@ -37,7 +38,8 @@ define(function(require) {
                 dueSoon: this.task.isDueSoon(),
                 overdue: this.task.isOverdue(),
                 snoozed: this.task.isSnoozed(),
-                unsnoozed: this.task.isUnsnoozed()
+                unsnoozed: this.task.isUnsnoozed(),
+                suggested: this.isSuggested
             });
             this.$el.html(html);
             this.$(".taskSummaryInput").hide(); // initially hidden
@@ -123,11 +125,11 @@ define(function(require) {
                 this.task.save();
             }
         },
-        select() {
+        select: function() {
             this.selected = true;
             this.$(".task-card").addClass("selected");
         },
-        unselect() {
+        unselect: function() {
             this.selected = false;
             this.$(".task-card").removeClass("selected");
         },
