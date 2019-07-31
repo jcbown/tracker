@@ -91,3 +91,10 @@ Build process release
 ### 1.3.0
 - Added background colour highlighting to indicate 'priority' in matrix
 - Added warning when number of tasks exceeds 20
+
+### 1.4.0
+- Added suggested tasks based on due date, three things, and started
+- Changed default task creation position in grid
+- Added 'b' keyboard shortcut for snooze and additional keyboard navigation
+- Changed default reporting to today
+- Bugfix of cleanup warning to not include snoozed tasks
